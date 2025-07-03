@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Day & Night Love 💫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      transition: all 0.5s ease;
+      background: black;
+      background-size: cover;
+    }
+
+    .container {
+      padding: 30px;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    /* Day Theme */
+    .day {
+      background: linear-gradient(to bottom, #fff0f5, #ffd1dc);
+      color: #4a148c;
+    }
+
+    .day .container {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Night Theme */
+    .night {
+      background: radial-gradient(circle at top, #1a237e, #0d1333);
+      color: #fff;
+    }
+
+    .night .container {
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: transparent url('https://i.postimg.cc/qR7nDfTZ/stars.gif') repeat top center;
+      z-index: 0;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars" style="display: none;"></div>
+
+  <div class="container">
+    <h1 id="greeting">Hello, My Love 🌸</h1>
+    <p id="message">The time doesn't matter, because my love for you shines always ✨</p>
+  </div>
+
+  <script>
+    const hour = new Date().getHours();
+    const body = document.body;
+    const greeting = document.getElementById("greeting");
+    const message = document.getElementById("message");
+    const stars = document.getElementById("stars");
+
+    if (hour >= 6 && hour < 18) {
+      // Day Theme
+      body.classList.add("day");
+      greeting.textContent = "Good Day, My Sunshine 🌞";
+      message.textContent = "You make every morning worth waking up to 💗";
+    } else {
+      // Night Theme
+      body.classList.add("night");
+      greeting.textContent = "Good Night, My Moon 🌙";
+      message.textContent = "Under this starry sky, I'm sending you all my love 💫";
+      stars.style.display = "block";
+    }
+  </script>
+</body>
+</html>
