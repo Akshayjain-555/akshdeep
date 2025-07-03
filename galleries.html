@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Our Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f8ff; padding: 20px; text-align: center; }
+    .item { margin: 10px auto; max-width: 90%; border: 1px solid #ccc; border-radius: 12px; padding: 10px; background: white; }
+    img, video, audio { max-width: 100%; border-radius: 12px; }
+  </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC0E3cUYUXfc64p3ViTv_p7U477Mhg8Xis",
+      authDomain: "akshdeep-d9c8e.firebaseapp.com",
+      projectId: "akshdeep-d9c8e",
+      storageBucket: "akshdeep-d9c8e.appspot.com",
+      messagingSenderId: "931962609335",
+      appId: "1:931962609335:web:c4517dd7689404bacc3732"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+    const listRef = ref(storage, 'memories');
+
+    listAll(listRef).then(res => {
+      res.items.forEach(itemRef => {
+        getDownloadURL(itemRef).then(url => {
+          let el;
+          if (url.match(/\.(jpeg|jpg|png|gif)$/)) {
+            el = document.createElement('img');
+            el.src = url;
+          } else if (url.match(/\.(mp4|webm|ogg)$/)) {
+            el = document.createElement('video');
+            el.src = url;
+            el.controls = true;
+          } else if (url.match(/\.(mp3|wav|m4a)$/)) {
+            el = document.createElement('audio');
+            el.src = url;
+            el.controls = true;
+          }
+
+          if (el) {
+            const wrapper = document.createElement('div');
+            wrapper.className = "item";
+            wrapper.appendChild(el);
+            document.body.appendChild(wrapper);
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>💖 Akshdeep Memories Gallery 💖</h1>
+  <p>All photos, videos, and songs you both uploaded will appear below ✨</p>
+</body>
+</html>
