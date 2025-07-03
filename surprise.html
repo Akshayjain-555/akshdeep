@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎁 A Surprise for You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ffe0ec, #ffe6f0);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    h1 {
+      color: #d81b60;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .btn {
+      padding: 15px 25px;
+      background-color: #f06292;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ec407a;
+      transform: scale(1.05);
+    }
+    .surprise {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #4a148c;
+      animation: fadeIn 1s ease forwards;
+    }
+    .surprise img {
+      margin-top: 20px;
+      width: 220px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎁 A Little Surprise Awaits You</h1>
+  <button class="btn" onclick="showSurprise()">Tap to Unlock 💝</button>
+
+  <div class="surprise" id="surpriseBox">
+    <p>You're my favorite person in this whole universe... 🌌  
+    No matter what, I choose you — again and again 💘</p>
+    <img src="https://i.postimg.cc/DwZcKcnz/cute-couple.gif" alt="Surprise Gift" />
+  </div>
+
+  <script>
+    function showSurprise() {
+      document.getElementById('surpriseBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
