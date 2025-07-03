@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Memories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #fff0f5; text-align: center; padding: 20px; }
+    input, button { padding: 10px; margin: 10px; border-radius: 8px; border: none; font-size: 16px; }
+    .hidden { display: none; }
+    .container { max-width: 400px; margin: auto; background: #ffffffdd; border-radius: 16px; padding: 20px; box-shadow: 0 0 10px #ccc; }
+  </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC0E3cUYUXfc64p3ViTv_p7U477Mhg8Xis",
+      authDomain: "akshdeep-d9c8e.firebaseapp.com",
+      projectId: "akshdeep-d9c8e",
+      storageBucket: "akshdeep-d9c8e.appspot.com",
+      messagingSenderId: "931962609335",
+      appId: "1:931962609335:web:c4517dd7689404bacc3732"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const storage = getStorage(app);
+
+    let currentUser = null;
+
+    function showUpload() {
+      document.getElementById("login-box").classList.add("hidden");
+      document.getElementById("upload-box").classList.remove("hidden");
+    }
+
+    document.getElementById("login-btn").onclick = () => {
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+      signInWithEmailAndPassword(auth, email, pass)
+        .then(() => showUpload())
+        .catch((e) => alert("Login failed!"));
+    };
+
+    document.getElementById("upload-btn").onclick = () => {
+      const file = document.getElementById("file").files[0];
+      if (!file) return alert("Please select a file!");
+
+      const storageRef = ref(storage, 'memories/' + file.name);
+      uploadBytes(storageRef, file).then((snapshot) => {
+        alert("Upload successful!");
+      }).catch((e) => alert("Upload failed!"));
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) showUpload();
+    });
+  </script>
+</head>
+<body>
+  <div class="container" id="login-box">
+    <h2>Login to Upload</h2>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button id="login-btn">Login</button>
+  </div>
+
+  <div class="container hidden" id="upload-box">
+    <h2>Upload Memories 📸🎵</h2>
+    <input type="file" id="file" accept="image/*,video/*,audio/*"><br>
+    <button id="upload-btn">Upload</button>
+  </div>
+</body>
+</html>
