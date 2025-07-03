@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Akshdeep 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -10,59 +10,54 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #fff1f8, #ffe0eb);
+      background: linear-gradient(to bottom right, #fff0f5, #ffe0e9);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       text-align: center;
-      overflow: hidden;
+      min-height: 100vh;
     }
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3.2rem;
       color: #d81b60;
-      margin: 0;
-      animation: fadeIn 2s ease;
+      margin-bottom: 10px;
     }
     p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #555;
-      max-width: 85%;
-      animation: fadeIn 3s ease;
+      max-width: 90%;
+      margin-bottom: 30px;
     }
-    .heart {
-      font-size: 3.5rem;
-      animation: beat 1.2s infinite;
-      color: #ff1744;
-      margin: 20px 0;
-    }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    .button {
-      padding: 12px 25px;
-      background-color: #d81b60;
+    .btn {
+      padding: 12px 20px;
+      background-color: #e91e63;
       color: white;
       border: none;
       border-radius: 25px;
+      margin: 8px;
       font-size: 1rem;
-      margin-top: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      width: 80%;
+      max-width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background-color: #d81b60;
     }
   </style>
 </head>
 <body>
-  <div class="heart">💖</div>
-  <h1>Welcome to Akshdeep</h1>
-  <p>In this little piece of the internet, our story lives on...  
-  A place only for us, made with all my heart. ❤️</p>
-  <button class="button" onclick="alert('You are my always and forever 💫')">Click Me</button>
+  <h1>Welcome to Akshdeep 💖</h1>
+  <p>This is our secret world — full of love, memories, and magical surprises just for us.</p>
+
+  <button class="btn" onclick="location.href='gallery.html'">📸 Photo Gallery</button>
+  <button class="btn" onclick="location.href='letter.html'">💌 Love Letter</button>
+  <button class="btn" onclick="location.href='surprise.html'">🎁 Surprise Gift</button>
+  <button class="btn" onclick="location.href='music.html'">🎶 Background Music</button>
+  <button class="btn" onclick="location.href='theme.html'">🌙 Day/Night Mode</button>
+  <button class="btn" onclick="location.href='private.html'">🔐 Private Section</button>
 </body>
 </html>
