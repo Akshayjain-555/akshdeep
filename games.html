@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Love Games 🎮</title>
+  <style>
+    body { text-align: center; padding: 2rem; background: #fff7f0; font-family: sans-serif; }
+    button { padding: 1rem 2rem; font-size: 1.1rem; border-radius: 8px; margin: 1rem; background: #f78fb3; border: none; color: white; }
+  </style>
+</head>
+<body>
+  <h2>🎲 Let's Play!</h2>
+  <button onclick="playTruth()">Truth or Dare</button>
+  <p id="output"></p>
+
+  <script>
+    const truths = ["Your most romantic memory?", "Biggest fear in love?", "Dream date with me?", "What do you feel now?"];
+    function playTruth() {
+      const index = Math.floor(Math.random() * truths.length);
+      document.getElementById('output').innerText = truths[index];
+    }
+  </script>
+</body>
+</html>
