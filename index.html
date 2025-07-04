@@ -1,20 +1,72 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Akshdeep 💞</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Akshdeep 💖</title>
   <style>
-    body { background: linear-gradient(#f9e7f1, #ffe0ec); font-family: sans-serif; text-align: center; padding: 2rem; }
-    h1 { color: #d63384; margin-bottom: 1rem; }
-    .btn { display: block; width: 80%; margin: 1rem auto; padding: 1rem; background: #d63384; color: white; font-size: 1.2rem; border: none; border-radius: 12px; }
-    .btn:hover { background: #b32a6c; }
+    body {
+      font-family: sans-serif;
+      background: #fff0f5;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .box {
+      background: #ffe0ec;
+      padding: 2rem;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 1rem;
+      width: 90%;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      padding: 1rem 2rem;
+      background: #d63384;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .error {
+      background: #ffcccc;
+      color: #a10000;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>💖 Welcome to Akshdeep 💖</h1>
-  <a href="gallery.html"><button class="btn">🖼 View Gallery</button></a>
-  <a href="upload.html"><button class="btn">📤 Upload Memories</button></a>
-  <a href="chat.html"><button class="btn">💬 Private Chat</button></a>
+  <div class="box">
+    <h2>🔐 Enter Password</h2>
+    <input type="password" id="password" placeholder="Enter your secret password">
+    <br>
+    <button onclick="checkPassword()">Login</button>
+    <div class="error" id="errorBox">❌ Invalid Password</div>
+  </div>
+
+  <script>
+    const correctPassword = "akshdeep@1907"; // You can change this password anytime
+
+    function checkPassword() {
+      const entered = document.getElementById("password").value;
+      const errorBox = document.getElementById("errorBox");
+
+      if (entered === correctPassword) {
+        window.location.href = "index.html"; // go to homepage
+      } else {
+        errorBox.style.display = "block";
+      }
+    }
+  </script>
 </body>
 </html>
