@@ -1,39 +1,70 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - Akshdeep 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Akshdeep 💖</title>
   <style>
-    body { background: #fff0f5; font-family: sans-serif; text-align: center; padding: 2rem; }
-    input { padding: 0.8rem; margin: 0.5rem; width: 90%; border-radius: 10px; border: 1px solid #ccc; }
-    button { padding: 0.8rem 2rem; border: none; background: #d63384; color: white; font-size: 1rem; border-radius: 10px; }
-    .login-box { max-width: 400px; margin: auto; background: #ffe0ec; padding: 2rem; border-radius: 20px; }
+    body {
+      font-family: sans-serif;
+      background: #fff0f5;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .box {
+      background: #ffe0ec;
+      padding: 2rem;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 1rem;
+      width: 90%;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      padding: 1rem 2rem;
+      background: #d63384;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .error {
+      background: #ffcccc;
+      color: #a10000;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>🔐 Akshdeep Login</h2>
-    <input type="text" id="username" placeholder="Username or Email"/><br/>
-    <input type="password" id="password" placeholder="Password"/><br/>
-    <button onclick="login()">Login</button>
-    <p id="msg"></p>
+  <div class="box">
+    <h2>🔐 Enter Password</h2>
+    <input type="password" id="password" placeholder="Enter your secret password">
+    <br>
+    <button onclick="checkPassword()">Login</button>
+    <div class="error" id="errorBox">❌ Invalid Password</div>
   </div>
 
   <script>
-    const USERS = {
-      "akshdeep": "akshdeep123",
-      "deepa": "love1907"
-    };
+    const correctPassword = "akshdeep@1907"; // You can change this password anytime
 
-    function login() {
-      const user = document.getElementById('username').value.trim();
-      const pass = document.getElementById('password').value.trim();
-      if (USERS[user] === pass) {
-        localStorage.setItem("auth", "true");
-        window.location.href = "index.html";
+    function checkPassword() {
+      const entered = document.getElementById("password").value;
+      const errorBox = document.getElementById("errorBox");
+
+      if (entered === correctPassword) {
+        window.location.href = "index.html"; // go to homepage
       } else {
-        document.getElementById("msg").innerText = "Invalid credentials. Try again.";
+        errorBox.style.display = "block";
       }
     }
   </script>
