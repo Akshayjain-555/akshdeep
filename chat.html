@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Private Chat 💬</title>
+  <style>
+    body { background: #f0f9ff; font-family: sans-serif; padding: 2rem; }
+    textarea, input { width: 100%; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+    .msg { background: #d1e7ff; padding: 0.5rem 1rem; border-radius: 10px; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h2>💌 Akshdeep Private Chat</h2>
+  <div id="chatBox"></div>
+  <input id="chatInput" placeholder="Type a message..." />
+  <button onclick="sendMsg()">Send</button>
+
+  <script>
+    const box = document.getElementById('chatBox');
+    const input = document.getElementById('chatInput');
+    function sendMsg() {
+      const msg = input.value;
+      if (!msg) return;
+      let all = JSON.parse(localStorage.getItem('chat') || '[]');
+      all.push(msg);
+      localStorage.setItem('chat', JSON.stringify(all));
+      render();
+      input.value = '';
+    }
+    function render() {
+      const all = JSON.parse(localStorage.getItem('chat') || '[]');
+      box.innerHTML = '';
+      all.forEach(m => {
+        let div = document.createElement('div');
+        div.className = 'msg';
+        div.innerText = m;
+        box.appendChild(div);
+      });
+    }
+    render();
+  </script>
+</body>
+</html>
