@@ -2,49 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Our Memories 📸</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Gallery</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #fff0f5, #ffe0e9);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #d81b60;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      width: 100%;
-      max-width: 500px;
-    }
-    .grid img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-    .grid img:hover {
-      transform: scale(1.03);
-    }
+    body { background: #fef2f4; text-align: center; font-family: sans-serif; padding: 1rem; }
+    img, video, audio { max-width: 90%; margin: 1rem auto; display: block; border-radius: 10px; }
   </style>
 </head>
 <body>
-  <h1>📸 Our Sweet Memories</h1>
-  <div class="grid">
-    <img src="https://i.postimg.cc/8c3Z1ZwB/couple1.jpg" alt="Memory 1" />
-    <img src="https://i.postimg.cc/4xXX9y3C/couple2.jpg" alt="Memory 2" />
-    <img src="https://i.postimg.cc/tRsQ2NDs/couple3.jpg" alt="Memory 3" />
-    <img src="https://i.postimg.cc/vZfwd2Md/couple4.jpg" alt="Memory 4" />
-  </div>
+  <h2>🖼 Your Memories</h2>
+  <div id="gallery"></div>
+  <script>
+    const gallery = document.getElementById('gallery');
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i);
+      let data = localStorage.getItem(key);
+      if (data.startsWith('data:image')) {
+        let img = new Image();
+        img.src = data;
+        gallery.appendChild(img);
+      } else if (data.startsWith('data:video')) {
+        let video = document.createElement('video');
+        video.controls = true;
+        video.src = data;
+        gallery.appendChild(video);
+      } else if (data.startsWith('data:audio')) {
+        let audio = document.createElement('audio');
+        audio.controls = true;
+        audio.src = data;
+        gallery.appendChild(audio);
+      }
+    }
+  </script>
 </body>
 </html>
